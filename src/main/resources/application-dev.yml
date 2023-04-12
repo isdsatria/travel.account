@@ -1,0 +1,17 @@
+server:
+  port: 8383
+
+spring:
+  datasource:
+    driverClassName : com.mysql.cj.jdbc.Driver
+    url : jdbc:mysql://localhost/tour_account
+    username : root
+    password :
+
+logging:
+  file:
+    name : C:\textfiles\log-tour-account.txt
+  level:
+    root : debug
+    org.springframework.web : info
+
