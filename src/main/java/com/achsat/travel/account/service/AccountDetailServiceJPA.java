@@ -5,13 +5,15 @@ import com.achsat.travel.account.repository.AccountDetailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AccountDetailServiceJPA implements IAccountDetailService{
 
     @Autowired
     AccountDetailRepository repository;
     @Override
-    public void insert(AccountDetail acct) {
+    public void create(AccountDetail acct) {
         repository.save(acct);
     }
 
@@ -29,4 +31,10 @@ public class AccountDetailServiceJPA implements IAccountDetailService{
     public AccountDetail findAccountById(AccountDetail acct) {
         return repository.findAccountDetailById(acct.getId());
     }
+
+    @Override
+    public List<AccountDetail> findAllAccount(){
+        return repository.findAllByOrderByName();
+    }
+
 }
