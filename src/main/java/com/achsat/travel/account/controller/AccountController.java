@@ -1,6 +1,7 @@
 package com.achsat.travel.account.controller;
 
 import com.achsat.travel.account.model.AccountDetail;
+import com.achsat.travel.account.model.dto.AccountDTO;
 import com.achsat.travel.account.model.dto.StatusMessageDTO;
 import com.achsat.travel.account.service.IAccountDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,31 +24,31 @@ public class AccountController {
 
         @GetMapping("/accounts")
         @ResponseStatus(HttpStatus.OK)
-        public @ResponseBody List<AccountDetail> getAllAccounts(){
+        public @ResponseBody List<AccountDTO> getAllAccounts(){
             return accountDetailService.findAllAccount();
 
         }
 
         @GetMapping("/account/{id}")
         @ResponseStatus(HttpStatus.OK)
-        public @ResponseBody AccountDetail getAccountById(@PathVariable("id") int id){
-            AccountDetail model = new AccountDetail();
+        public @ResponseBody AccountDTO getAccountById(@PathVariable("id") int id){
+            AccountDTO model = new AccountDTO();
             model.setId(id);
             return accountDetailService.findAccountById(model);
         }
 
         @GetMapping("/account/getbyemail")
         @ResponseStatus(HttpStatus.OK)
-        public @ResponseBody AccountDetail getAccountByEmail(@RequestParam("email") String email){
-            AccountDetail model= new AccountDetail();
+        public @ResponseBody AccountDTO getAccountByEmail(@RequestParam("email") String email){
+            AccountDTO model= new AccountDTO();
             model.setEmail(email);
             return accountDetailService.findAccountByEmail(model);
         }
 
 
         @PostMapping("/account/create")
-        public ResponseEntity<?> createAccount(@RequestBody AccountDetail acct){
-            StatusMessageDTO<AccountDetail> responseMsg=  new StatusMessageDTO<AccountDetail>();
+        public ResponseEntity<?> createAccount(@RequestBody AccountDTO acct){
+            StatusMessageDTO<AccountDTO> responseMsg=  new StatusMessageDTO<AccountDTO>();
             try {
                 accountDetailService.create(acct);
                 responseMsg.setStatus(HttpStatus.OK.value());
@@ -62,8 +63,8 @@ public class AccountController {
          }
 
          @PutMapping("/account/update")
-         public ResponseEntity<?> updateAccount(@RequestBody AccountDetail acct){
-             StatusMessageDTO<AccountDetail> responseMsg=  new StatusMessageDTO<AccountDetail>();
+         public ResponseEntity<?> updateAccount(@RequestBody AccountDTO acct){
+             StatusMessageDTO<AccountDTO> responseMsg=  new StatusMessageDTO<AccountDTO>();
              try{
                  accountDetailService.update(acct);
                  responseMsg.setStatus(HttpStatus.OK.value());

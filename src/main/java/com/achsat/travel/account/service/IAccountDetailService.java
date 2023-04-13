@@ -1,18 +1,19 @@
 package com.achsat.travel.account.service;
 
 import com.achsat.travel.account.model.AccountDetail;
+import com.achsat.travel.account.model.dto.AccountDTO;
 
 import java.util.List;
 
 public interface IAccountDetailService {
 
-    void create(AccountDetail acct);
-    void update(AccountDetail acct);
+    void create(AccountDTO acct);
+    void update(AccountDTO acct);
 
-    AccountDetail findAccountByEmail(AccountDetail acct);
-    AccountDetail findAccountById(AccountDetail acct);
+    AccountDTO findAccountByEmail(AccountDTO acct);
+    AccountDTO findAccountById(AccountDTO acct);
 
-    List<AccountDetail> findAllAccount();
+    List<AccountDTO> findAllAccount();
 
 
 }
